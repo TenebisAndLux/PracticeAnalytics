@@ -43,13 +43,13 @@
 # print(mstr)
 ###########################################
 # E
-# my_sum = 0
-# while float(number := input()) != 0:
-#     if float(number) >= 500.0:
-#         my_sum += float(number) * 0.9
-#     else:
-#         my_sum += float(number)
-# print(my_sum)
+my_sum = 0
+while float(number := input()) != 0:
+    if float(number) >= 500.0:
+        my_sum += float(number) * 0.9
+    else:
+        my_sum += float(number)
+print(my_sum)
 ###########################################
 # F
 

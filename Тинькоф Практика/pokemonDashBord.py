@@ -3,6 +3,13 @@ import pandas as pd
 # Загрузка данных из CSV файла
 df = pd.read_csv('Pokemon.csv')
 
+# Удаление дубликатов
+df = df.drop_duplicates()
+# Отбор только необходимых столбцов
+df = df[['Name', 'Type 1', 'Total', 'Legendary']]
+# Фильтрация данных
+df = df[df['Total'] > 0]  # Исключение нулевых значений общей силы
+df = df[df['Legendary'].isin([True, False])]  # Исключение лишних значений в столбце "Legendary"
 # Визуализация данных
 print("Визуализация данных:")
 print(df)
@@ -30,6 +37,13 @@ mean_total_non_legendary = df[df['Legendary'] == False]['Total'].mean()
 
 print("\nСредняя общая сила легендарных покемонов:", mean_total_legendary)
 print("\nСредняя общая сила обычных покемонов:", mean_total_non_legendary)
+
+# Средняя общая сила легендарных и обычных покемонов
+median_total_legendary = df[df['Legendary'] == True]['Total'].median()
+median_total_non_legendary = df[df['Legendary'] == False]['Total'].median()
+
+print("\nМедианная общая сила легендарных покемонов:", median_total_legendary)
+print("\nМедианная общая сила обычных покемонов:", median_total_non_legendary)
 
 # Самый сильный и слабый покемоны среди легендарных и обычных покемонов
 strongest_legendary = df[df['Legendary'] == True]['Total'].idxmax()

@@ -1,9 +1,6 @@
-a = int(input('Программа, вычисляющая сумму нечетных чисел на промежутке [a:b]: '))
-b = int(input())
-s = 0 #сумма
+import itertools
 
-for x in range(a, b+1):
-    if x % 2 != 0:
-        s += x
+all_codes = list(itertools.product(range(10), repeat=6))
+valid_codes = [code for code in all_codes if any(code.count(i) >= 3 for i in range(10))]
 
-print (f'Сумма нечетных чисел на заданном промежутке: {s}')
+print(f"Количество различных кодов удовлетворяющих требованиям: {len(valid_codes)}")
